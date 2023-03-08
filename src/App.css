@@ -1,0 +1,318 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #F9F5F5;
+}
+
+.font-regular {
+    font-weight: 400 !important;
+    margin-top: 0px !important;
+}
+
+hr {
+    border: none;
+    border-top: 3px dashed #eeecec;
+    margin: 10px 0;
+}
+ul {
+    margin: 0 0 5px 30px;
+}
+
+.main-title h1{
+    background-color: #fff;
+    color: #e13205;
+    padding: 10px 20px 15px;
+    margin: 20px 0 10px;
+    border-left: solid 5px #e13205;
+}
+.main-title p {
+    color: #4e4e4e;
+    padding: 10px 10px 15px;
+    margin: 20px 0 10px;
+    border-left: solid 5px #737373;
+}
+.main-title p:hover {
+    color: #e13205;
+    font-weight: 700;
+    padding: 10px 10px 15px;
+    border-left: solid 20px #e13205;
+}
+
+.hiden-div {
+    display: none;
+}
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.subContainer {
+    width:auto;
+    background-color: #fff;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px #00000021;
+}
+
+.btn {
+    font-size: 1.1rem;
+    padding: 15px 40px;
+    margin: 15px auto;
+    border: transparent;
+    background-color: transparent;
+    cursor: pointer;
+    border-radius: 50vh;
+    transition: all 250ms ease-in-out;
+}
+.small {
+    font-size: 1rem;
+    padding: 2px 30px 3px;
+    width: 100px;
+    margin: 0 ;
+    border: transparent;
+    background-color: transparent;
+    cursor: pointer;
+    border-radius: 10px 0 0 0;
+    transition: all 250ms ease-in-out;
+}
+.btn-prim {
+    display: flex;
+    justify-content: center;
+    background-color: #e13205;
+    color: #fff;
+}
+.btn-prim:hover {
+    background-color: #e1054b8d;
+    color: #fff;
+}
+.small:hover {
+    padding: 10px;
+    transition: all 100ms ease-in-out;
+}
+/* .treble-btn {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+} */
+
+.treble-btn button {
+    font-size: 1rem;
+    padding: 5px 30px 6px;
+    width: 150px;
+    margin: 10px 0 ;
+    border: transparent;
+    background-color: transparent;
+    cursor: pointer;
+    border-radius: 50vh;
+    box-shadow: 0px 5px 10px 1px #00000024;
+    transition: all 250ms ease-in-out;
+}
+.treble-btn button{
+    background-color: #e13205;
+    color: #fff;
+}
+.btn-edit {
+    background-color: #d9ebd3 !important;
+    color: #000000 !important;
+}
+.btn-edit:hover {
+    background-color: #93f276 !important;
+    color: #000000 !important;
+}
+.btn-delete {
+    background-color: #dfdfdf !important;
+    color: #000000 !important;
+}
+.btn-delete:hover {
+    background-color: #000 !important;
+    color: #dfdfdf !important;
+}
+
+.navbar {
+    background-color: #fff;
+    color: #191919;
+    padding-block: 0;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.links-style h3 a {
+    font-size: 1rem;
+    text-decoration: none;
+    list-style: none;
+    font-weight: 600;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    justify-content:end;
+}
+.navbar ul li a {
+    font-size: 1rem;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 10px 15px;
+}
+.navbar ul li a.active {
+    background-color: #F9F5F5;
+}
+.navbar ul li a:hover {
+    color: #e13205;
+    border-bottom: solid 3px #e13205;
+}
+
+.input-group {
+    width: 100%;
+    margin: 5px;
+}
+
+.input-group label {
+    display: inline-block;
+    font-weight: 700;
+    width: calc(100% - 30px) !important;
+    margin-bottom: 2px;
+    margin-top: 20px;
+}
+
+.input-group input, textarea {
+    width: calc(100% - 10px) !important;
+    background-color: #F9F5F5;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #000000;
+    border: 3px solid #e1310529;
+    border-radius: 3px;
+    transition: all 350ms ease-in-out;
+    box-shadow: inset -1px 2px 3px 1px #968a8a26;
+}
+.input-group input:focus, textarea:focus {
+    outline: none;
+    background-color: #f7f4ff;
+    border-radius: 0px;
+    border: 3px solid #e36647b6;
+    box-shadow: 0px 5px 10px 1px #d4cee466;
+}
+
+.radio-element input {
+    margin: 10px 0px 0px 30px; 
+}
+.radio-element label {
+    margin: 10px 15px 0px; 
+}
+
+.txt-area {
+    font-family: inherit;
+    font-size: 1rem;
+    height: 200px;
+    overflow: hidden;
+}
+
+.question {
+    color: #e13205;
+    text-align: center;
+}
+
+.list-table {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    padding: 0px 10px;
+    margin-bottom: 2px;
+    margin-top: 100px;
+}
+.list {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 10px;
+    margin-bottom: 2px;
+    margin-top: 0;
+}
+.list label {
+    font-weight: 700;
+    margin-top: 40px;
+}
+.list p {
+    padding-right: 50px;
+    font-weight: 700;
+}
+
+.list-item {
+    background-color: #fff;
+    border: solid 1px #6d5c5c16;
+    border-radius: 10px;
+}
+.list-item:hover {
+    background-color: #f7f4ff;
+    border: solid 1px #7144e262;
+    border-radius: 10px;
+    box-shadow: 0px 5px 20px 1px #cac4d966; 
+}
+
+.app-show {
+    padding: 10px 20px;
+    outline: none;
+    background-color: #f7f4ff;
+    border-radius: 0px 10px 10px 10px;
+    border: 3px solid #e36647b6;
+    box-shadow: 0px 5px 10px 1px #00000066;
+}
+
+.checkbox-input {
+    appearance: none;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    outline: none;
+    position: relative;
+  }
+  .checkbox-input:checked::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0.5px;
+    left: 0.5px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #00cc00;
+  }
+  .checkbox-label {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    color: #333;
+  }
+  
+
+
+
+
+
+
+@media (min-width: 800px) {
+    .flex-container {
+        display: flex !important;
+    }
+    .input-group, .fill-line input {
+        width: 100% !important;
+    }
+    .treble-btn {
+        display: flex;
+        justify-content: space-around;
+        padding: 10px;
+    }
+}

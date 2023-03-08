@@ -1,0 +1,22 @@
+# Get all applications
+GET http://localhost:3001/applications HTTP/1.1
+Content-Type: application/json
+
+###
+
+# Create a new application
+POST http://localhost:3001/applications HTTP/1.1
+Content-Type: application/json
+
+###
+
+# Update an application
+PUT http://localhost:3001/applications/I0XV9nF HTTP/1.1
+Content-Type: application/json
+
+
+###
+
+# Remove an application
+DELETE  http://localhost:3001/applications/testing HTTP/1.1
+Content-Type: application/json
