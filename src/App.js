@@ -48,13 +48,13 @@ function App() {
 
   const approveById = async (approvedApplic) => {
     const response = await axios.put(`http://localhost:3001/applications/${approvedApplic.id}`, approvedApplic)
-    const editedApplication = applications.map((application) => {
+    const approvedApplication = applications.map((application) => {
       if (application.id === approvedApplic.id) {
         return { ...application, ...response };
       }
       return application;
     });
-    setApplications(editedApplication);
+    setApplications(approvedApplication);
   };
   
 

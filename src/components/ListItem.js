@@ -5,13 +5,12 @@ import { useState } from 'react';
 const ListItem = ({ application, onEdit, onDelete, onApprove }) => {
   const [showDetails, setShowDetails] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
-  const [approvedApplic, setApprovedApplic] = useState({});
-  const [hideButtons, setHideButtons] = useState(true);
+  const [approvedApplic, setApprovedApplic] = useState({approved: false});
 
    // checkbox handling
   const [checked, setChecked] = useState(false);
   const handleCheckboxChange = (e) => {
-    setApprovedApplic({ approved: 'Godkänd', ...application })
+    setApprovedApplic({ ...application, approved: e.target.checked })
     setChecked(e.target.checked);
   };
   
@@ -19,14 +18,11 @@ const ListItem = ({ application, onEdit, onDelete, onApprove }) => {
     setShowEdit(!showEdit);
   };
   
-  const approveClicked = (e) => {
-    if (checked) {
-      onApprove(approvedApplic)
-      setHideButtons(false)
-    }
+  const handleApprove = () => {
+    onApprove(approvedApplic);
   }
-
-
+  
+  
   return (
     <div>
       {!showDetails ?
@@ -44,21 +40,17 @@ const ListItem = ({ application, onEdit, onDelete, onApprove }) => {
               <button className='btn-prim small' onClick={ ()=> setShowDetails(!showDetails) }>stäng</button>
               <div name='ApplicationShow' className='app-show'>
                 <ApplicShow application={application} />
-                {hideButtons ?
-                  <div className='subContainer chk-box'>
-                    <label className="checkbox-label">
-                      <input className="checkbox-input" type="checkbox" checked={checked}  onChange={handleCheckboxChange} />
-                      <label>Godkänna ärendet.</label>
-                    </label>
-                    <div className='treble-btn'>
-                      <button className='btn btn-prim' onClick={approveClicked}>Godkänn</button>
-                      <button className='btn-prim btn-edit' onClick={handleEditBtn}>Redigera</button>
-                      <button className='btn-prim btn-delete' onClick={ ()=> onDelete(application.id) }>Ta bort</button>
-                    </div>
+                <div className='subContainer chk-box'>
+                  <label className="checkbox-label">
+                    <input className="checkbox-input" type="checkbox" checked={checked}  onChange={handleCheckboxChange} />
+                    <label>Godkänna ärendet.</label>
+                  </label>
+                  <div className='treble-btn'>
+                    <button className='btn btn-prim' onClick={handleApprove}>Godkänn</button>
+                    <button className='btn-prim btn-edit' onClick={handleEditBtn}>Redigera</button>
+                    <button className='btn-prim btn-delete' onClick={ ()=> onDelete(application.id) }>Ta bort</button>
                   </div>
-                :
-                  null
-                }
+                </div>
               </div>
             </div>
           :

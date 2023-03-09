@@ -1,4 +1,5 @@
 import ListItem from '../components/ListItem';
+import ApprovedListItem from '../components/ApprovedListItem';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
@@ -7,29 +8,29 @@ const Admin = ({ applications, onEdit, onDelete, onApprove }) => {
   const [alternator, setAlternator] = useState(false);
   const { authorized } = useAuthContext();
 
-  const renderedApplications = applications.map((application) => {
-    if (!application.approved && !alternator) {
+  const render1 = applications
+  .filter((application) => !application.approved)
+  .map((application) => {
+    return (
+      <ListItem
+        key={application.id}
+        application={application}
+        onEdit={onEdit}
+        onDelete={onDelete}
+        onApprove={onApprove}
+      />
+    );
+  });
+  
+  const render2 = applications
+  .filter((application) => application.approved)
+  .map((application) => {
       return (
-        <ListItem
-          key={application.id}
-          application={application}
-          onEdit={onEdit}
-          onDelete={onDelete}
-          onApprove={onApprove}
-        />
-      )
-    }
-    if (application.approved && alternator) {
-      return (
-        <ListItem
-          key={application.id}
-          application={application}
-          onEdit={onEdit}
-          onDelete={onDelete}
-          onApprove={onApprove}
-        />
-      )
-    }
+      <ApprovedListItem
+        key={application.id}
+        application={application}
+      />
+    )
   });
 
   return (
@@ -48,7 +49,7 @@ const Admin = ({ applications, onEdit, onDelete, onApprove }) => {
                 <label>Gäller fr.o.m Datum</label>
               </div>
               <hr></hr>
-              {renderedApplications}
+              {render1}
             </div>
           : 
             <div>
@@ -61,7 +62,7 @@ const Admin = ({ applications, onEdit, onDelete, onApprove }) => {
                 <label>Gäller fr.o.m Datum</label>
               </div>
               <hr></hr>
-              {renderedApplications}
+              {render2}
             </div>
           }
           
