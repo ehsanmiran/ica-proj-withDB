@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const EditItem = ({ application, onEdit, onEditBtn }) => {
+const EditItem = ({ application, onEdit, handleEditBtn }) => {
 // retrieve form data and set the initial state
   const [formUpdate, setFormUpdate] = useState(application);
 
@@ -13,7 +13,7 @@ const EditItem = ({ application, onEdit, onEditBtn }) => {
   const handleEditSubmit = (e) => {
     e.preventDefault();
     onEdit(formUpdate);
-    onEditBtn();
+    handleEditBtn();
   }
   
 

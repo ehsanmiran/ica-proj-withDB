@@ -25,38 +25,32 @@ function App() {
     fetchApplications();
   }, [])
 
-  const createApplication = async (formData) => {
-    const response = await axios.post('http://localhost:3001/applications', {
-      ...formData
-    });
 
-// This code was used and working correctly before json-server
-    /* const applicsArray = [
-            {
-        id: Date.now().toString(),
-        ...formData
-      },
-      ...applications
-    ] */
+  const createApplication = async (formData) => {
+    const response = await axios.post('http://localhost:3001/applications', { ...formData });
     const applicsArray = [ ...applications, response.data ]
     setApplications(applicsArray);
   };
 
 
-  const editApplicById = (formUpdate) => {
+  const editApplicById = async (formUpdate) => {
+    const response = await axios.put(`http://localhost:3001/applications/${formUpdate.id}`, formUpdate)
+ 
     const editedApplication = applications.map((application) => {
       if (application.id === formUpdate.id) {
-        return { ...application, ...formUpdate };
+        return { ...application, ...response };
       }
       return application;
     });
     setApplications(editedApplication);
   };
   
-  const approveById = (approvedApplic) => {
+
+  const approveById = async (approvedApplic) => {
+    const response = await axios.put(`http://localhost:3001/applications/${approvedApplic.id}`, approvedApplic)
     const editedApplication = applications.map((application) => {
       if (application.id === approvedApplic.id) {
-        return { ...application, ...approvedApplic };
+        return { ...application, ...response };
       }
       return application;
     });

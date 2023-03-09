@@ -5,12 +5,13 @@ import { useState } from 'react';
 const ListItem = ({ application, onEdit, onDelete, onApprove }) => {
   const [showDetails, setShowDetails] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
-  const [approvedApplic, setApprovedApplic] = useState(application);
+  const [approvedApplic, setApprovedApplic] = useState({});
+  const [hideButtons, setHideButtons] = useState(true);
 
-  // checkbox handling
+   // checkbox handling
   const [checked, setChecked] = useState(false);
   const handleCheckboxChange = (e) => {
-    setApprovedApplic({ ...approvedApplic, approved: 'Godkänd' })
+    setApprovedApplic({ approved: 'Godkänd', ...application })
     setChecked(e.target.checked);
   };
   
@@ -21,6 +22,7 @@ const ListItem = ({ application, onEdit, onDelete, onApprove }) => {
   const approveClicked = (e) => {
     if (checked) {
       onApprove(approvedApplic)
+      setHideButtons(false)
     }
   }
 
@@ -42,7 +44,7 @@ const ListItem = ({ application, onEdit, onDelete, onApprove }) => {
               <button className='btn-prim small' onClick={ ()=> setShowDetails(!showDetails) }>stäng</button>
               <div name='ApplicationShow' className='app-show'>
                 <ApplicShow application={application} />
-                {!application.approved ?
+                {hideButtons ?
                   <div className='subContainer chk-box'>
                     <label className="checkbox-label">
                       <input className="checkbox-input" type="checkbox" checked={checked}  onChange={handleCheckboxChange} />
@@ -63,8 +65,7 @@ const ListItem = ({ application, onEdit, onDelete, onApprove }) => {
             <EditItem
               application={application}
               onEdit={onEdit}
-              onApprove={onApprove}
-              onEditBtn={handleEditBtn}
+              handleEditBtn={handleEditBtn}
             />
           }
         </div>
