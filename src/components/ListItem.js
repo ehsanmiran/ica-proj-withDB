@@ -2,9 +2,9 @@ import ApplicShow from './ApplicShow';
 import EditItem from './EditItem';
 import { useState } from 'react';
 
-const ListItem = ({ application, onEdit, onDelete, onApprove }) => {
+const ListItem = ({ application, /* onEdit, */ onDelete, onApprove }) => {
   const [showDetails, setShowDetails] = useState(false);
-  const [showEdit, setShowEdit] = useState(false);
+/*   const [showEdit, setShowEdit] = useState(false); */
   const [approvedApplic, setApprovedApplic] = useState({approved: false});
 
    // checkbox handling
@@ -13,10 +13,10 @@ const ListItem = ({ application, onEdit, onDelete, onApprove }) => {
     setApprovedApplic({ ...application, approved: e.target.checked })
     setChecked(e.target.checked);
   };
-  
-  const handleEditBtn = () => { 
+  console.log(approvedApplic.approved)
+/*   const handleEditBtn = () => {
     setShowEdit(!showEdit);
-  };
+  }; */
   
   const handleApprove = () => {
     onApprove(approvedApplic);
@@ -35,7 +35,7 @@ const ListItem = ({ application, onEdit, onDelete, onApprove }) => {
         </div>
       :
         <div>
-          {!showEdit ?
+          {/* {!showEdit ? */}
             <div>
               <button className='btn-prim small' onClick={ ()=> setShowDetails(!showDetails) }>stäng</button>
               <div name='ApplicationShow' className='app-show'>
@@ -47,19 +47,19 @@ const ListItem = ({ application, onEdit, onDelete, onApprove }) => {
                   </label>
                   <div className='treble-btn'>
                     <button className='btn btn-prim' onClick={handleApprove}>Godkänn</button>
-                    <button className='btn-prim btn-edit' onClick={handleEditBtn}>Redigera</button>
+                    {/* <button className='btn-prim btn-edit' onClick={handleEditBtn}>Redigera</button> */}
                     <button className='btn-prim btn-delete' onClick={ ()=> onDelete(application.id) }>Ta bort</button>
                   </div>
                 </div>
               </div>
             </div>
-          :
+          {/* :
             <EditItem
               application={application}
               onEdit={onEdit}
               handleEditBtn={handleEditBtn}
             />
-          }
+          } */}
         </div>
         
           

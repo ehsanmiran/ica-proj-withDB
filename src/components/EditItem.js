@@ -1,23 +1,19 @@
 import { useState } from 'react';
 
-const EditItem = ({ application, onEdit, handleEditBtn, reRender }) => {
+const EditItem = ({ application, onEdit, handleEditBtn }) => {
 // retrieve form data and set the initial state
   const [formUpdate, setFormUpdate] = useState(application);
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    // update the form state with the new value
-    setFormUpdate({ ...formUpdate, [name]: value });
+    setFormUpdate({ ...formUpdate, [e.target.name]: e.target.value });
   }
   
   const handleEditSubmit = (e) => {
     e.preventDefault();
     onEdit(formUpdate);
-    handleEditBtn();
-    reRender();
+    handleEditBtn(e);
   }
   
-
   
   return (
     <div>

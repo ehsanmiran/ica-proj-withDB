@@ -33,9 +33,8 @@ function App() {
   };
 
 
-  const editApplicById = async (formUpdate) => {
+/*   const editApplicById = async (formUpdate) => {
     const response = await axios.put(`http://localhost:3001/applications/${formUpdate.id}`, formUpdate)
- 
     const editedApplication = applications.map((application) => {
       if (application.id === formUpdate.id) {
         return { ...application, ...response };
@@ -43,7 +42,7 @@ function App() {
       return application;
     });
     setApplications(editedApplication);
-  };
+  }; */
   
 
   const approveById = async (approvedApplic) => {
@@ -58,11 +57,17 @@ function App() {
   };
   
 
-  const deleteApplicById = (id) => {
-    const updatedApplication = applications.filter(application => {
-      return application.id !== id;
-    });
-    setApplications(updatedApplication);
+  const deleteApplicById = async (id) => {
+    try {
+      const response = await axios.delete(`http://localhost:3001/applications/${id}`)
+      const updatedApplication = applications.filter(application => {
+        return application.id !== id;
+      });
+      setApplications(updatedApplication);
+    } catch (error) {
+      console.log(error);
+      // handle error here, e.g. show an error message to the user
+    }
   };
 
   return (
@@ -82,7 +87,7 @@ function App() {
             <ProtectedRoute>
               <Admin
                 applications={applications}
-                onEdit={editApplicById}
+                /* onEdit={editApplicById} */
                 onDelete={deleteApplicById}
                 onApprove={approveById}
               />

@@ -4,7 +4,7 @@ import { useAuthContext } from '../hooks/useAuthContext';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
-const Admin = ({ applications, onEdit, onDelete, onApprove }) => {
+const Admin = ({ applications, /* onEdit, */ onDelete, onApprove }) => {
   const [alternator, setAlternator] = useState(false);
   const { authorized } = useAuthContext();
 
@@ -15,7 +15,7 @@ const Admin = ({ applications, onEdit, onDelete, onApprove }) => {
       <ListItem
         key={application.id}
         application={application}
-        onEdit={onEdit}
+        /* onEdit={onEdit} */
         onDelete={onDelete}
         onApprove={onApprove}
       />
