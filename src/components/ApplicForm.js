@@ -9,7 +9,6 @@ const ApplicForm = ({ onCreate }) => {
 
 
   const [formData, setFormData] = useState({
-    approved: false,
     client: '',
     validDate: '',
     konto: '',
@@ -51,7 +50,6 @@ const ApplicForm = ({ onCreate }) => {
     }
     setLoading(true)
     setFormData({
-      approved: false,
       client: '',
       validDate: '',
       konto: '',
