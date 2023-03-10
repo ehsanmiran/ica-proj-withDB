@@ -1,39 +1,43 @@
 import ListItem from '../components/ListItem';
+import ApprovedItemsList from '../components/ApprovedItemsList';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const Admin = ({ applications, onEdit, onDelete, onApprove }) => {
   const [alternator, setAlternator] = useState(false);
   const { authorized } = useAuthContext();
 
-  useEffect((applications) => {
-    applications = applications
-  })
-  const renderedApplications = applications.map((application) => {
-    if (!application.approved && !alternator) {
-      return (
-        <ListItem
-          key={application.id}
-          application={application}
-          onEdit={onEdit}
-          onDelete={onDelete}
-          onApprove={onApprove}
-        />
-      )
-    }
-    if (application.approved && alternator) {
-      return (
-        <ListItem
-          key={application.id}
-          application={application}
-          onEdit={onEdit}
-          onDelete={onDelete}
-          onApprove={onApprove}
-        />
-      )
-    }
+
+
+  const render1 = applications
+  .filter((application) => !application.approved)
+  .map((application, index) => {
+    return (
+      <ListItem
+        key={application.id}
+        application={application}
+        index={index}
+        onEdit={onEdit}
+        onDelete={onDelete}
+        onApprove={onApprove}
+      />
+    );
   });
+  
+  const render2 = applications
+  .filter((application) => application.approved)
+  .map((application, index) => {
+    return (
+      <ApprovedItemsList
+        key={application.id}
+        application={application}
+        index={index}
+      />
+    )
+  });
+
+
 
   return (
     <div>
@@ -51,7 +55,7 @@ const Admin = ({ applications, onEdit, onDelete, onApprove }) => {
                 <label>Gäller fr.o.m Datum</label>
               </div>
               <hr></hr>
-              {renderedApplications}
+              {render1}
             </div>
           : 
             <div>
@@ -64,7 +68,7 @@ const Admin = ({ applications, onEdit, onDelete, onApprove }) => {
                 <label>Gäller fr.o.m Datum</label>
               </div>
               <hr></hr>
-              {renderedApplications}
+              {render2}
             </div>
           }
           

@@ -21,23 +21,33 @@ function App() {
     const response = await axios.get('http://localhost:3001/applications');
     setApplications(response.data);
   };
-
   useEffect(()=>{
     fetchApplications();
   }, [])
 
 
-  const createApplication = (formData) => {
-    const applicsArray = [
-      {
-        id: Date.now().toString(),
-        ...formData
-      },
-      ...applications
-    ]
+
+  const createApplication = async (formData) => {
+    const response = await axios.post('http://localhost:3001/applications', { ...formData });
+    const applicsArray = [ ...applications, response.data ]
     setApplications(applicsArray);
   };
 
+
+
+  const editApplicById = async (newApplication, index) => {
+    const response = await axios.put(`http://localhost:3001/applications/${newApplication.id}`, newApplication)
+    const editedApplication = applications.map((application) => {
+      if (application.id === newApplication.id) {
+        const newApplications = [...applications];
+        newApplications[index] = response;
+      }
+      return application;
+    });
+    setApplications(editedApplication);
+  };
+
+/* clean version before connecting to db.json
   const editApplicById = (formUpdate) => {
     const editedApplication = applications.map((application) => {
       if (application.id === formUpdate.id) {
@@ -46,8 +56,10 @@ function App() {
       return application;
     });
     setApplications(editedApplication);
-  };
+  }; */
   
+
+
   const approveById = (approvedApplic) => {
     const editedApplication = applications.map((application) => {
       if (application.id === approvedApplic.id) {
