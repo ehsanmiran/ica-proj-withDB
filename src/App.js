@@ -7,13 +7,25 @@ import ApplicForm from "./components/ApplicForm";
 import { Routes, Route } from 'react-router-dom';
 import { ProtectedRoute } from './routes/ProtectedRoute';
 import { useAuthContext } from './hooks/useAuthContext';
-import { useState } from 'react';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
 
 
 function App() {
   const { authorized } = useAuthContext();
   const [applications, setApplications] = useState([]);
+
+
+  const fetchApplications = async () => {
+    const response = await axios.get('http://localhost:3001/applications');
+    setApplications(response.data);
+  };
+
+  useEffect(()=>{
+    fetchApplications();
+  }, [])
+
 
   const createApplication = (formData) => {
     const applicsArray = [
@@ -47,11 +59,17 @@ function App() {
   };
   
 
-  const deleteApplicById = (id) => {
-    const updatedApplication = applications.filter(application => {
-      return application.id !== id;
-    });
-    setApplications(updatedApplication);
+  const deleteApplicById = async (id) => {
+    try {
+      const response = await axios.delete(`http://localhost:3001/applications/${id}`)
+      const updatedApplication = applications.filter(application => {
+        return application.id !== id;
+      });
+      setApplications(updatedApplication);
+    } catch (error) {
+      console.log(error);
+      // handle error here, e.g. show an error message to the user
+    }
   };
 
   return (
