@@ -4,44 +4,14 @@ import { useAuthContext } from '../hooks/useAuthContext';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
-const Admin = ({ applications, onEdit, onDelete, onApprove }) => {
+const Ansvarig = ({ applications, onEdit, onDelete, onApprove }) => {
   const [alternator, setAlternator] = useState(false);
   const { authorized } = useAuthContext();
 
 
-
-  const render1 = applications
-  .filter((application) => !application.approved)
-  .map((application, index) => {
-    return (
-      <ListItem
-        key={application.id}
-        application={application}
-        index={index}
-        onEdit={onEdit}
-        onDelete={onDelete}
-        onApprove={onApprove}
-      />
-    );
-  });
-  
-  const render2 = applications
-  .filter((application) => application.approved)
-  .map((application, index) => {
-    return (
-      <ApprovedItemsList
-        key={application.id}
-        application={application}
-        index={index}
-      />
-    )
-  });
-
-
-
   return (
     <div>
-      { !authorized && <h3><Link to="/Adminlogin">To access the application form, Log in please.</Link></h3> }
+      { !authorized && <h3><Link to="/Ansvariglogin">To access the application form, Log in please.</Link></h3> }
       { authorized &&
         <div>
           {!alternator ?
@@ -55,7 +25,21 @@ const Admin = ({ applications, onEdit, onDelete, onApprove }) => {
                 <label>Gäller fr.o.m Datum</label>
               </div>
               <hr></hr>
-              {render1}
+              {
+                applications.filter((application) => !application.approved)
+                .map((application, index) => {
+                  return (
+                    <ListItem
+                      key={application.id}
+                      application={application}
+                      index={index}
+                      onEdit={onEdit}
+                      onDelete={onDelete}
+                      onApprove={onApprove}
+                    />
+                  );
+                })
+              }
             </div>
           : 
             <div>
@@ -68,7 +52,19 @@ const Admin = ({ applications, onEdit, onDelete, onApprove }) => {
                 <label>Gäller fr.o.m Datum</label>
               </div>
               <hr></hr>
-              {render2}
+              {
+                applications
+                .filter((application) => application.approved)
+                .map((application, index) => {
+                  return (
+                    <ApprovedItemsList
+                      key={application.id}
+                      application={application}
+                      index={index}
+                    />
+                  )
+                })
+              }
             </div>
           }
           
@@ -78,4 +74,4 @@ const Admin = ({ applications, onEdit, onDelete, onApprove }) => {
   )
 }
 
-export default Admin
+export default Ansvarig

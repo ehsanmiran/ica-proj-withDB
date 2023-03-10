@@ -10,15 +10,11 @@ const EditItem = ({ application, onEdit, onEditBtn, index }) => {
     setFormUpdate({ ...formUpdate, [name]: value });
   }
   
-/*   const handleEditSubmit = (e) => {
-    e.preventDefault();
-    onEdit(formUpdate);
-    onEditBtn();
-  } */
   const handleEditSubmit = () => {
     const newApplication = { ...application, ...formUpdate };
     onEdit(newApplication, index);
     onEditBtn();
+    setFormUpdate({})
   };
   
 
@@ -229,7 +225,7 @@ const EditItem = ({ application, onEdit, onEditBtn, index }) => {
           />
         </div>
       <div className='treble-btn'>
-        <button className='btn-prim' onClick={handleEditSubmit}>Spara</button>
+        <button className='btn-prim' type='submit' onSubmit={handleEditSubmit}>Spara</button>
       </div>
       </form>
     </div>

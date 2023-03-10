@@ -1,6 +1,6 @@
 import './App.css';
 import Login from './views/Login';
-import Admin from './views/Admin';
+import Ansvarig from './views/Ansvarig';
 import Navbar from './components/Navbar';
 import ApplicForm from "./components/ApplicForm";
 
@@ -92,14 +92,14 @@ function App() {
         <Routes>
           <Route path='/' element={ 
           <div className="links-style">
-          { !authorized && <h3><Link to="/login">To access the application form, you need to log in.</Link></h3> }
-          { authorized &&<ApplicForm onCreate={createApplication} />}
-        </div>
+            { !authorized && <h3><Link to="/login">To access the application form, you need to log in.</Link></h3> }
+            { authorized &&<ApplicForm onCreate={createApplication} />}
+          </div>
           } />
           <Route path='/login' element={ <Login />} />
-          <Route path='/admin' element={
+          <Route path='/Ansvarig' element={
             <ProtectedRoute>
-              <Admin
+              <Ansvarig
                 applications={applications}
                 onEdit={editApplicById}
                 onDelete={deleteApplicById}

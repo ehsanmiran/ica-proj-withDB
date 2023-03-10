@@ -49,22 +49,7 @@ const ApplicForm = ({ onCreate }) => {
         setSuccessSend(true);
     }
     setLoading(true)
-    setFormData({
-      client: '',
-      validDate: '',
-      konto: '',
-      kontoTxt: '',
-      kontsReg: '',
-      anvdsTill: '',
-      bolag: '',
-      medelsaldo: '',
-      bankHFM: '',
-      egnaBiRapp: '',
-      iSETMD: '',
-      gemnBiRapp: '',
-      hfmRapp: '',
-      message: ''
-    })
+    setFormData({})
   }
 
   return (
@@ -72,7 +57,7 @@ const ApplicForm = ({ onCreate }) => {
       {!successSend ?
         <div>
           <div className='main-title'>
-            <h2>Beställning Nytt Konto till Agresso</h2>
+            <h1>Beställning Nytt Konto till Agresso</h1>
           </div>
           <form className='subContainer' onSubmit={handleSubmit}>
 
