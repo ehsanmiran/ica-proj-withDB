@@ -5,27 +5,38 @@ import Navbar from './components/Navbar';
 import ApplicForm from "./components/ApplicForm";
 
 import { Routes, Route } from 'react-router-dom';
-import { ProtectedRoute } from './routes/ProtectedRoute';
-import { useAuthContext } from './hooks/useAuthContext';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
+import axios from 'axios';
+import { useAuthContext } from './hooks/useAuthContext';
+import { ProtectedRoute } from './routes/ProtectedRoute';
 
 
 function App() {
   const { authorized } = useAuthContext();
   const [applications, setApplications] = useState([]);
 
-  const createApplication = (formData) => {
-    const applicsArray = [
-      {
-        id: Date.now().toString(),
-        ...formData
-      },
-      ...applications
-    ]
-    setApplications(applicsArray);
-  };
+  useEffect(() => {
+    async function fetchData() {
+      const response = await axios.get('http://localhost:3001/applications');
+      setApplications(response.data);
+    }
+    fetchData();
+  }, []);
 
+
+
+  async function handleAddItem(formData) {
+    try {
+      const response = await axios.post(`http://localhost:3001/applications`, formData);
+      const updatedApplications = [...applications, response.data];
+      setApplications(updatedApplications);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  
   const editApplicById = (formUpdate) => {
     const editedApplication = applications.map((application) => {
       if (application.id === formUpdate.id) {
@@ -47,12 +58,15 @@ function App() {
   };
   
 
-  const deleteApplicById = (id) => {
-    const updatedApplication = applications.filter(application => {
-      return application.id !== id;
-    });
-    setApplications(updatedApplication);
-  };
+  async function handleDeleteItem(id) {
+    try {
+      await axios.delete(`http://localhost:3001/applications/${id}`);
+      const updatedApplications = applications.filter((item) => item.id !== id);
+      setApplications(updatedApplications);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   return (
 
@@ -63,7 +77,7 @@ function App() {
           <Route path='/' element={ 
           <div className="links-style">
           { !authorized && <h3><Link to="/login">To access the application form, you need to log in.</Link></h3> }
-          { authorized &&<ApplicForm onCreate={createApplication} />}
+          { authorized &&<ApplicForm onCreate={handleAddItem} />}
         </div>
           } />
           <Route path='/login' element={ <Login />} />
@@ -72,7 +86,7 @@ function App() {
               <Admin
                 applications={applications}
                 onEdit={editApplicById}
-                onDelete={deleteApplicById}
+                onDelete={handleDeleteItem}
                 onApprove={approveById}
               />
             </ProtectedRoute>
