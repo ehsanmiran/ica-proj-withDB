@@ -1,7 +1,7 @@
 import ApplicShow from './ApplicShow';
 import { useState } from 'react';
 
-const ApprovedItemsList = ({ application }) => {
+const ApprovedItem = ({ application }) => {
     const [showDetails, setShowDetails] = useState(false);
     return (
         <div>
@@ -28,4 +28,4 @@ const ApprovedItemsList = ({ application }) => {
     )
 }
 
-export default ApprovedItemsList
+export default ApprovedItem

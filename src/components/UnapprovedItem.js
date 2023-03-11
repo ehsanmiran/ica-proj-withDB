@@ -2,7 +2,7 @@ import ApplicShow from './ApplicShow';
 import EditItem from './EditItem';
 import { useState } from 'react';
 
-const ListItem = ({ application, onEdit, index, onDelete, onApprove }) => {
+const UnapprovedItem = ({ application, onEdit, onDelete, onApprove }) => {
   const [showDetails, setShowDetails] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
   const [approvedApplic, setApprovedApplic] = useState({});
@@ -59,20 +59,16 @@ const ListItem = ({ application, onEdit, index, onDelete, onApprove }) => {
             <EditItem
               application={application}
               onEdit={onEdit}
-              index={index}
+              /* index={index} */
               onApprove={onApprove}
               onEditBtn={handleEditBtn}
             />
           }
         </div>
-        
-          
       }
-
-
       <hr></hr>
     </div>
   )
 }
 
-export default ListItem
+export default UnapprovedItem

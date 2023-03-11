@@ -13,7 +13,7 @@ const Navbar = () => {
           <ul className="nav-links">
               { !authorized && <li><NavLink to="/login">Log in</NavLink></li> }
               { authorized && <li><NavLink to="/login">Log out</NavLink></li> }
-              <li><NavLink to="/Ansvarig">Ansvarig</NavLink></li>
+              <li><NavLink to="/admin">Admin</NavLink></li>
               <li><NavLink to="/">Home</NavLink></li>
           </ul>
       </div>

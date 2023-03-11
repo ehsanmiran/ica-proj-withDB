@@ -1,5 +1,5 @@
-import ListItem from '../components/ListItem';
-import ApprovedItemsList from '../components/ApprovedItemsList';
+import UnpprovedItem from '../components/UnapprovedItem';
+import ApprovedItem from '../components/ApprovedItem';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
@@ -29,7 +29,7 @@ const Ansvarig = ({ applications, onEdit, onDelete, onApprove }) => {
                 applications.filter((application) => !application.approved)
                 .map((application, index) => {
                   return (
-                    <ListItem
+                    <UnpprovedItem
                       key={application.id}
                       application={application}
                       index={index}
@@ -57,7 +57,7 @@ const Ansvarig = ({ applications, onEdit, onDelete, onApprove }) => {
                 .filter((application) => application.approved)
                 .map((application, index) => {
                   return (
-                    <ApprovedItemsList
+                    <ApprovedItem
                       key={application.id}
                       application={application}
                       index={index}
