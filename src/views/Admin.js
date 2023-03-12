@@ -4,7 +4,7 @@ import { useAuthContext } from '../hooks/useAuthContext';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
-const Ansvarig = ({ applications, onEdit, onDelete, onApprove }) => {
+const Ansvarig = ({ applications, onEdit, onDelete }) => {
   const [alternator, setAlternator] = useState(false);
   const { authorized } = useAuthContext();
 
@@ -27,15 +27,13 @@ const Ansvarig = ({ applications, onEdit, onDelete, onApprove }) => {
               <hr></hr>
               {
                 applications.filter((application) => !application.approved)
-                .map((application, index) => {
+                .map((application) => {
                   return (
                     <UnpprovedItem
                       key={application.id}
                       application={application}
-                      index={index}
                       onEdit={onEdit}
                       onDelete={onDelete}
-                      onApprove={onApprove}
                     />
                   );
                 })
@@ -55,12 +53,11 @@ const Ansvarig = ({ applications, onEdit, onDelete, onApprove }) => {
               {
                 applications
                 .filter((application) => application.approved)
-                .map((application, index) => {
+                .map((application) => {
                   return (
                     <ApprovedItem
                       key={application.id}
                       application={application}
-                      index={index}
                     />
                   )
                 })

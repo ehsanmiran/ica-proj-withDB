@@ -2,15 +2,15 @@ import ApplicShow from './ApplicShow';
 import EditItem from './EditItem';
 import { useState } from 'react';
 
-const UnapprovedItem = ({ application, onEdit, onDelete, onApprove }) => {
+const UnapprovedItem = ({ application, onEdit, onDelete }) => {
   const [showDetails, setShowDetails] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
-  const [approvedApplic, setApprovedApplic] = useState({});
+  const [approvedItem, setApprovedItem] = useState({});
 
-   // checkbox handling
+   //------------ checkbox handling --------------
   const [checked, setChecked] = useState(false);
   const handleCheckboxChange = (e) => {
-    setApprovedApplic({ ...application, approved: 'Godkänd' })
+    setApprovedItem({ ...application, approved: 'Godkänd' })
     setChecked(e.target.checked);
   };
   
@@ -20,7 +20,7 @@ const UnapprovedItem = ({ application, onEdit, onDelete, onApprove }) => {
   
   const approveClicked = (e) => {
     if (checked) {
-      onApprove(approvedApplic)
+      onEdit(approvedItem)
     }
   }
 
@@ -59,8 +59,6 @@ const UnapprovedItem = ({ application, onEdit, onDelete, onApprove }) => {
             <EditItem
               application={application}
               onEdit={onEdit}
-              /* index={index} */
-              onApprove={onApprove}
               onEditBtn={handleEditBtn}
             />
           }

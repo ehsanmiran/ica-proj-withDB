@@ -36,26 +36,17 @@ function App() {
     }
   }
 
-  
-  const editApplicById = (formUpdate) => {
-    const editedApplication = applications.map((application) => {
-      if (application.id === formUpdate.id) {
-        return { ...application, ...formUpdate };
-      }
-      return application;
-    });
-    setApplications(editedApplication);
-  };
-  
-  const approveById = (approvedApplic) => {
-    const editedApplication = applications.map((application) => {
-      if (application.id === approvedApplic.id) {
-        return { ...application, ...approvedApplic };
-      }
-      return application;
-    });
-    setApplications(editedApplication);
-  };
+
+
+  async function handleEditItem(updatedItem) {
+    try {
+      const response = await axios.put(`http://localhost:3001/applications/${updatedItem.id}`, updatedItem);
+      const updatedApplications = applications.map((item) => item.id === updatedItem.id ? response.data : item);
+      setApplications(updatedApplications);
+    } catch (error) {
+      console.error(error);
+    }
+  }
   
 
   async function handleDeleteItem(id) {
@@ -85,9 +76,8 @@ function App() {
             <ProtectedRoute>
               <Admin
                 applications={applications}
-                onEdit={editApplicById}
+                onEdit={handleEditItem}
                 onDelete={handleDeleteItem}
-                onApprove={approveById}
               />
             </ProtectedRoute>
           } />
