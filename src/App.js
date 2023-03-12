@@ -1,4 +1,5 @@
 import './App.css';
+import './font.css';
 import Login from './views/Login';
 import Admin from './views/Admin';
 import Navbar from './components/Navbar';

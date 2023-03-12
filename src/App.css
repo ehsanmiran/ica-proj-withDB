@@ -24,6 +24,7 @@ ul {
 }
 
 .main-title h1{
+    font-family: ICARubrik-Bold !important;
     background-color: #fff;
     color: #e13205;
     padding: 10px 20px 15px;
@@ -31,6 +32,8 @@ ul {
     border-left: solid 5px #e13205;
 }
 .main-title p {
+    font-family: ICARubrik-Bold !important;
+    font-size: 1.2rem;
     color: #4e4e4e;
     padding: 10px 10px 15px;
     margin: 20px 0 10px;
@@ -225,6 +228,9 @@ ul {
 }
 
 .list-table {
+    font-size: 1.1rem;
+    font-family: ICARubrik-Bold !important;
+    color: #4a4a4a;
     display: flex;
     justify-content: space-between;
     font-weight: 700;

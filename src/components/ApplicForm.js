@@ -81,8 +81,8 @@ const ApplicForm = ({ onAddItem }) => {
     <div>
       {!successSend ?
         <div>
-          <div className='main-title'>
-            <h2>Beställning Nytt Konto till Agresso</h2>
+          <div className='main-title ICA-font'>
+            <h1>Beställning Nytt Konto till Agresso</h1>
           </div>
           <form className='subContainer' onSubmit={handleSubmit} onChange={handleChange} >
 

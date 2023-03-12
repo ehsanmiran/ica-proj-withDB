@@ -41,7 +41,7 @@ const Ansvarig = ({ applications, onEdit, onDelete }) => {
             </div>
           : 
             <div>
-              <div className='main-title'>
+              <div className='main-title ICA-font'>
                 <p onClick={()=> setAlternator(!alternator)}>Mottagna ansökningar</p>
                 <h1>Godkända ansökningar</h1>
               </div>
