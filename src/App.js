@@ -77,7 +77,7 @@ function App() {
           <Route path='/' element={ 
           <div className="links-style">
           { !authorized && <h3><Link to="/login">To access the application form, you need to log in.</Link></h3> }
-          { authorized &&<ApplicForm onCreate={handleAddItem} />}
+          { authorized &&<ApplicForm onAddItem={handleAddItem} />}
         </div>
           } />
           <Route path='/login' element={ <Login />} />
