@@ -20,8 +20,8 @@ const ApplicShow = ({ application }) => {
       <div className='list'><p>Meddelande:</p> { application.message }</div>
       <hr></hr>
       {application.approvedBy ?
-      <div>
-        <div className='main-title'><p>Automatiskt skapade data</p><hr className="hr-red"></hr></div>
+      <div className="subContainer">
+        <div className='sub-title'><p>Automatiskt skapade data</p><hr className="hr-red"></hr></div>
         <div className='list'><p>Ansökan ID:</p> { application.id }</div><hr></hr>
         <div className='list'><p>Utfärdandedatum:</p> { application.issueDate }</div><hr></hr>
         <div className='list'><p>Skapad av:</p> { application.userID }</div><hr></hr>

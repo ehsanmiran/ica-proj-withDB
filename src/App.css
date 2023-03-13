@@ -16,7 +16,7 @@ body {
 
 hr {
     border: none;
-    border-top: 3px dashed #eeecec;
+    border-top: 3px dotted #eeecec;
     margin: 10px 0;
 }
 .hr-red {
@@ -49,6 +49,14 @@ ul {
     font-weight: 700;
     padding: 10px 10px 15px;
     border-left: solid 20px #e13205;
+}
+
+.sub-title {
+    font-family: ICARubrik-Bold !important;
+    font-size: 1.2rem;
+    color: #e13205;
+    padding: 10px;
+    margin-top: 30px;
 }
 
 .hiden-div {
@@ -103,16 +111,11 @@ ul {
     padding: 10px;
     transition: all 100ms ease-in-out;
 }
-/* .treble-btn {
-    display: flex;
-    justify-content: space-around;
-    padding: 10px;
-} */
 
 .treble-btn button {
     font-size: 1rem;
     padding: 5px 30px 6px;
-    width: 150px;
+    width: 100%;
     margin: 10px 0 ;
     border: transparent;
     background-color: transparent;
@@ -125,20 +128,21 @@ ul {
     background-color: #e13205;
     color: #fff;
 }
+
 .btn-edit {
-    background-color: #d9ebd3 !important;
+    background-color: #c0edb2 !important;
     color: #000000 !important;
 }
 .btn-edit:hover {
-    background-color: #93f276 !important;
+    background-color: #42f26b !important;
     color: #000000 !important;
 }
 .btn-delete {
-    background-color: #dfdfdf !important;
+    background-color: #adadad !important;
     color: #000000 !important;
 }
 .btn-delete:hover {
-    background-color: #000 !important;
+    background-color: #253c3d !important;
     color: #dfdfdf !important;
 }
 
@@ -325,5 +329,8 @@ ul {
         display: flex;
         justify-content: space-around;
         padding: 10px;
+    }
+    .treble-btn button {
+        width: 150px;
     }
 }
