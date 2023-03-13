@@ -68,7 +68,7 @@ function App() {
         <Routes>
           <Route path='/' element={ 
           <div className="links-style">
-          { !authorized && <h3><Link to="/login">To access the application form, you need to log in.</Link></h3> }
+          { !authorized && <h3><Link to="/login">This is the "login" page, which leads to Different.. To access the application form "Beställning Nytt Konto till Agresso", you need to log in.</Link></h3> }
           { authorized &&<ApplicForm onAddItem={handleAddItem} />}
         </div>
           } />

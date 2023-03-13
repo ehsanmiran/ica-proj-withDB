@@ -7,13 +7,28 @@ const UnapprovedItem = ({ application, onEdit, onDelete }) => {
   const [showEdit, setShowEdit] = useState(false);
   const [approvedItem, setApprovedItem] = useState({});
 
+
+  const currentDate = new Date(Date.now())
+  .toLocaleString('sv-SE', {
+    day: '2-digit', 
+    month: '2-digit', 
+    year: 'numeric', 
+    hour: '2-digit', 
+    minute: '2-digit', 
+    second: '2-digit' 
+  });
+
    //------------ checkbox handling --------------
   const [checked, setChecked] = useState(false);
   const handleCheckboxChange = (e) => {
-    setApprovedItem({ ...application, approved: 'Godkänd' })
+    setApprovedItem({ ...application, approved: 'Godkänd', approveDate: currentDate})
     setChecked(e.target.checked);
   };
-  
+  //------ when checkbox checked: get the "GodkännaresID" from inlogging data
+  //------ and add it to the object as a "application.approvedBy". This will be
+  //------ shown only on the "applicShow" of "Godkända ansökningar" list.
+
+
   const handleEditBtn = () => { 
     setShowEdit(!showEdit);
   };

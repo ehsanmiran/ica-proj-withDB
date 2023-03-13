@@ -19,6 +19,11 @@ hr {
     border-top: 3px dashed #eeecec;
     margin: 10px 0;
 }
+.hr-red {
+    border: none;
+    border-top: 3px dotted #e131057c;
+    margin: 10px 0;
+}
 ul {
     margin: 0 0 5px 30px;
 }

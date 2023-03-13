@@ -31,8 +31,13 @@ const ApplicForm = ({ onAddItem }) => {
     gemnBiRapp:  '',
     hfmRapp:  '',
     message:  '',
-    issueDate:  ''
+    issueDate:  '',
+    userID: '',
+    approvedBy: '',
+    approveDate: ''
   });
+  //---- "userID" & "approvedBy" will be automatically added to the "object" above,  taking 
+  //---- their values from the user inlogging data to identify who's added this application.
 
 // ------------- radio inputs -----------------
   const [option1, setOption1] = useState('Nej');
