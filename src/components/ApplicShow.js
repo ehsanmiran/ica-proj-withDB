@@ -18,13 +18,13 @@ const ApplicShow = ({ application }) => {
       <div className='list'><p>Gemensamma BI-rapporter:</p> { application.gemnBiRapp }</div><hr></hr>
       <div className='list'><p>HFM -rapporter:</p> { application.hfmRapp }</div><hr></hr>
       <div className='list'><p>Meddelande:</p> { application.message }</div>
-      <hr className="hr-red"></hr>
-      <div className='main-title'><p>Automatiskt skapade data</p><hr ></hr></div>
-      <div className='list'><p>Ansökan ID:</p> { application.id }</div><hr></hr>
-      <div className='list'><p>Utfärdandedatum:</p> { application.issueDate }</div><hr></hr>
-      <div className='list'><p>Skapad av:</p> { application.userID }</div><hr></hr>
+      <hr></hr>
       {application.approvedBy ?
       <div>
+        <div className='main-title'><p>Automatiskt skapade data</p><hr className="hr-red"></hr></div>
+        <div className='list'><p>Ansökan ID:</p> { application.id }</div><hr></hr>
+        <div className='list'><p>Utfärdandedatum:</p> { application.issueDate }</div><hr></hr>
+        <div className='list'><p>Skapad av:</p> { application.userID }</div><hr></hr>
         <div className='list'><p>Godkänd av:</p> { application.approvedBy }</div><hr></hr>
         <div className='list'><p>godkännandedatum:</p> { application.approveDate}</div><hr></hr>
       </div>
