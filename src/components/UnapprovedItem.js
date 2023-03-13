@@ -57,10 +57,10 @@ const UnapprovedItem = ({ application, onEdit, onDelete }) => {
               <button className='btn-prim small' onClick={ ()=> setShowDetails(!showDetails) }>stäng</button>
               <div name='ApplicationShow' className='app-show'>
                 <ApplicShow application={application} />
-                <div className='subContainer chk-box'>
+                <div className='chk-box'>
                   <label className="checkbox-label">
                     <input className="checkbox-input" type="checkbox" checked={checked}  onChange={handleCheckboxChange} />
-                    <label>Godkänna ärendet.</label>
+                    <label>Godkänna detta ärende!</label>
                   </label>
                   <div className='treble-btn'>
                     <button className='btn btn-prim' onClick={approveClicked}>Godkänn</button>
