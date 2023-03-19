@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import ApplicsContext from '../contexts/ApplicsContext';
 
-const EditItem = ({ application, onEdit, onEditBtn }) => {
+const EditItem = ({ application, onEditBtn }) => {
+  const { handleEditItem } = useContext(ApplicsContext);
 // retrieve form data and set the initial state
   const [updateItem, setFormUpdate] = useState(application);
 
@@ -12,7 +14,7 @@ const EditItem = ({ application, onEdit, onEditBtn }) => {
   
   const handleEditSubmit = (e) => {
     e.preventDefault();
-    onEdit(updateItem);
+    handleEditItem(updateItem);
     onEditBtn();
   }
   

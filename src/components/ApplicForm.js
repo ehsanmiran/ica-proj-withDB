@@ -1,8 +1,11 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import ApplicsContext from '../contexts/ApplicsContext';
 
-const ApplicForm = ({ onAddItem }) => {
+const ApplicForm = () => {
   const [verification, setVerification] = useState(true)
   const [successSend, setSuccessSend] = useState(false)
+
+  const { handleAddItem } = useContext(ApplicsContext);
 
   const currentDate = new Date(Date.now())
     .toLocaleString('sv-SE', {
@@ -74,7 +77,7 @@ const ApplicForm = ({ onAddItem }) => {
       return
     }else{
         setVerification(true)
-        onAddItem(formData);
+        handleAddItem(formData);
         setSuccessSend(true);
     }
     setFormData({})

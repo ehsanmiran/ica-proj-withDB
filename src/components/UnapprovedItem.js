@@ -1,11 +1,14 @@
 import ApplicShow from './ApplicShow';
 import EditItem from './EditItem';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import ApplicsContext from '../contexts/ApplicsContext';
 
-const UnapprovedItem = ({ application, onEdit, onDelete }) => {
+const UnapprovedItem = ({ application }) => {
   const [showDetails, setShowDetails] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
   const [approvedItem, setApprovedItem] = useState({});
+
+  const { handleEditItem, handleDeleteItem } = useContext(ApplicsContext);
 
 
   const currentDate = new Date(Date.now())
@@ -35,7 +38,7 @@ const UnapprovedItem = ({ application, onEdit, onDelete }) => {
   
   const approveClicked = (e) => {
     if (checked) {
-      onEdit(approvedItem)
+      handleEditItem(approvedItem)
     }
   }
 
@@ -65,17 +68,13 @@ const UnapprovedItem = ({ application, onEdit, onDelete }) => {
                   <div className='treble-btn'>
                     <button className='btn btn-prim' onClick={approveClicked}>Godkänn</button>
                     <button className='btn-prim btn-edit' onClick={handleEditBtn}>Redigera</button>
-                    <button className='btn-prim btn-delete' onClick={ ()=> onDelete(application.id) }>Ta bort</button>
+                    <button className='btn-prim btn-delete' onClick={ ()=> handleDeleteItem(application.id) }>Ta bort</button>
                   </div>
                 </div>
               </div>
             </div>
           :
-            <EditItem
-              application={application}
-              onEdit={onEdit}
-              onEditBtn={handleEditBtn}
-            />
+            <EditItem application={application} onEditBtn={handleEditBtn} />
           }
         </div>
       }

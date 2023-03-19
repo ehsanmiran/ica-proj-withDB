@@ -1,7 +1,9 @@
 import ApplicShow from './ApplicShow';
 import { useState } from 'react';
 
+
 const ApprovedItem = ({ application }) => {
+
     const [showDetails, setShowDetails] = useState(false);
     return (
         <div>
@@ -17,7 +19,7 @@ const ApprovedItem = ({ application }) => {
             <div>
                 <button className='btn-prim small' onClick={ ()=> setShowDetails(!showDetails) }>stäng</button>
                 <div name='ApplicationShow' className='app-show'>
-                    <ApplicShow application={application} />
+                    <ApplicShow />
                 </div>
             </div>   
         }

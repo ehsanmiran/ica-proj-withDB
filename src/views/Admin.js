@@ -2,16 +2,20 @@ import UnpprovedItem from '../components/UnapprovedItem';
 import ApprovedItem from '../components/ApprovedItem';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import ApplicsContext from '../contexts/ApplicsContext';
 
-const Ansvarig = ({ applications, onEdit, onDelete }) => {
+
+const Admin = () => {
   const [alternator, setAlternator] = useState(false);
   const { authorized } = useAuthContext();
+
+  const { applications } = useContext(ApplicsContext);
 
 
   return (
     <div>
-      { !authorized && <h3><Link to="/Ansvariglogin">To access the application form, Log in please.</Link></h3> }
+      { !authorized && <h3><Link to="/Adminlogin">To access the application form, Log in please.</Link></h3> }
       { authorized &&
         <div>
           {!alternator ?
@@ -29,12 +33,7 @@ const Ansvarig = ({ applications, onEdit, onDelete }) => {
                 applications.filter((application) => !application.approved)
                 .map((application) => {
                   return (
-                    <UnpprovedItem
-                      key={application.id}
-                      application={application}
-                      onEdit={onEdit}
-                      onDelete={onDelete}
-                    />
+                    <UnpprovedItem key={application.id} application={application} />
                   );
                 })
               }
@@ -55,10 +54,7 @@ const Ansvarig = ({ applications, onEdit, onDelete }) => {
                 .filter((application) => application.approved)
                 .map((application) => {
                   return (
-                    <ApprovedItem
-                      key={application.id}
-                      application={application}
-                    />
+                    <ApprovedItem key={application.id} application={application} />
                   )
                 })
               }
@@ -71,4 +67,4 @@ const Ansvarig = ({ applications, onEdit, onDelete }) => {
   )
 }
 
-export default Ansvarig
+export default Admin
