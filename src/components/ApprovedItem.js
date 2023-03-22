@@ -19,7 +19,7 @@ const ApprovedItem = ({ application }) => {
             <div>
                 <button className='btn-prim small' onClick={ ()=> setShowDetails(!showDetails) }>stäng</button>
                 <div name='ApplicationShow' className='app-show'>
-                    <ApplicShow />
+                    <ApplicShow application={application} />
                 </div>
             </div>   
         }
