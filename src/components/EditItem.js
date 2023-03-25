@@ -17,12 +17,17 @@ const EditItem = ({ application, onEditBtn }) => {
     handleEditItem(updateItem);
     onEditBtn();
   }
+  const handleDiscard = (e) => {
+    e.preventDefault();
+    onEditBtn();
+  }
   
 
   
   return (
     <div>
       <form  className='subContainer' onChange={handleInputChange}>
+      <div className='sub-title'><p>Redigera Ansökan</p><hr className="hr-red"></hr></div>
 
         <div className='flex-container fill-line'>
           <div className='input-group'>
@@ -141,6 +146,7 @@ const EditItem = ({ application, onEditBtn }) => {
         </div>
       <div className='treble-btn'>
         <button className='btn-prim' onClick={handleEditSubmit}>Spara</button>
+        <button className='btn-prim' onClick={handleDiscard}>Avbryta</button>
       </div>
       </form>
     </div>
