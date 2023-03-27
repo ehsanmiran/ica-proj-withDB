@@ -9,7 +9,16 @@ function Provider ({ children }) {
 
   const fetchApplics = async () => {
     const response = await axios.get('http://localhost:3001/applications');
-    setApplications(response.data);
+    const sortedApplications = response.data.sort((a, b) => {
+      if (a.validDate < b.validDate) {
+        return -1;
+      }
+      if (a.validDate > b.validDate) {
+        return 1;
+      }
+      return 0;
+    });
+    setApplications(sortedApplications);
   };
 
 
